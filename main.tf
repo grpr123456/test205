@@ -15,7 +15,7 @@ resource "aws_subnet" "first" {
     cidr_block = var.subnet1cidr
     depends_on = [ aws_vpc.myvpc ]
     lifecycle {
-      prevent_destroy = true
+      prevent_destroy = false
     }
   
 }
