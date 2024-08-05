@@ -3,7 +3,7 @@ provider "aws"{
 }
 
 resource "aws_vpc" "myvpc" {
- cidr_block = "var.vpc_cidr"
+ cidr_block = var.vpccidr
    tags = {
    Name = "testvpc"
  }
@@ -12,7 +12,7 @@ resource "aws_vpc" "myvpc" {
 resource "aws_subnet" "first" {
 
     vpc_id = aws_vpc.myvpc.id
-    cidr_block = "var.subnet1_cidr"
+    cidr_block = var.subnet1cidr
     depends_on = [ aws_vpc.myvpc ]
     lifecycle {
       prevent_destroy = true
@@ -22,6 +22,6 @@ resource "aws_subnet" "first" {
 
 resource "aws_subnet" "second" {
   vpc_id = aws_vpc.myvpc.id
-    cidr_block = "var.subnet2_cidr"
+    cidr_block = var.subnet2cidr
     depends_on = [ aws_vpc.myvpc ]
 }
